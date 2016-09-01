@@ -13,3 +13,5 @@ RUN apt-get -y install nodejs npm
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 RUN apt-get update && apt-get -y autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+WORKDIR /var/www
