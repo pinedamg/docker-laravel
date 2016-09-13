@@ -12,9 +12,18 @@ RUN apt-get update
 RUN apt-get -y install nodejs npm
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
+#NODEJS INSTALL BOWER GULP
+RUN npm install --global gulp
+RUN npm install --global bower
+RUN export DISABLE_NOTIFIER=true
+
 #ADD LARAVEL RECOMMEND SETTINGS
 COPY zz-laravel.ini /etc/php5/cli/conf.d/zz-laravel.ini
 COPY zz-laravel.ini /etc/php5/apache/conf.d/zz-laravel.ini
+
+#ADD LARAVEL ALIASES
+COPY ./aliases /root/aliases
+RUN cat /root/aliases >> /root/.bash_aliases && rm -f /root/aliases
 
 #ADD VIRTUALHOST
 COPY vhost.conf /etc/apache2/sites-enabled/000-default.conf

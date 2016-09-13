@@ -1,0 +1,5 @@
+#LARAVEL ALIASES
+alias bower="bower --allow-root"
+alias cup="composer update"
+alias cdump="composer dumpautoload"
+
