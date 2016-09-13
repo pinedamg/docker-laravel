@@ -19,7 +19,7 @@ RUN export DISABLE_NOTIFIER=true
 
 #ADD LARAVEL RECOMMEND SETTINGS
 COPY zz-laravel.ini /etc/php5/cli/conf.d/zz-laravel.ini
-COPY zz-laravel.ini /etc/php5/apache/conf.d/zz-laravel.ini
+COPY zz-laravel.ini /etc/php5/apache2/conf.d/zz-laravel.ini
 
 #ADD LARAVEL ALIASES
 COPY ./aliases /root/aliases
