@@ -1,5 +1,7 @@
 #LARAVEL ALIASES
+alias gulpwatch="gulp watch"
 alias bower="bower --allow-root"
-alias cup="composer update"
-alias cdump="composer dumpautoload"
-
+alias compupdate="composer update"
+alias compdumpautoload="composer dumpautoload"
+alias phpartisan="php artisan"
+alias cache-clean="php artisan cache:clean"

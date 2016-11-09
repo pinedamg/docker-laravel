@@ -8,9 +8,8 @@ RUN /usr/bin/curl -sS https://getcomposer.org/installer |/usr/bin/php
 RUN /bin/mv composer.phar /usr/local/bin/composer
 
 #INSTALL NODE AND EXTENSIONS
-RUN apt-get update
-RUN apt-get -y install nodejs npm
-RUN ln -s /usr/bin/nodejs /usr/bin/node
+RUN /usr/bin/curl -sL https://deb.nodesource.com/setup_7.x | -
+RUN apt-get install -y nodejs
 
 #NODEJS INSTALL BOWER GULP
 RUN npm install --global gulp
