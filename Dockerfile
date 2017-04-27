@@ -7,6 +7,10 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN /usr/bin/curl -sS https://getcomposer.org/installer |/usr/bin/php
 RUN /bin/mv composer.phar /usr/local/bin/composer
 
+#INSTALL LARAVEL
+RUN /usr/local/bin/composer global require "laravel/installer"
+RUN ln -s /root/.composer/vendor/laravel/installer /usr/local/bin/laravel
+
 #INSTALL NODE AND EXTENSIONS
 RUN /usr/bin/curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get install -y nodejs
@@ -16,9 +20,12 @@ RUN npm install --global gulp
 RUN npm install --global bower
 RUN export DISABLE_NOTIFIER=true
 
+#INSTALL LARAVEL COMMAND
+RUN composer global require "laravel/installer"
+
 #ADD LARAVEL RECOMMEND SETTINGS
-COPY zz-laravel.ini /etc/php5/cli/conf.d/zz-laravel.ini
-COPY zz-laravel.ini /etc/php5/apache2/conf.d/zz-laravel.ini
+COPY 60-laravel.ini /etc/php5/mods-available/zz-laravel.ini
+RUN php5enmod laravel
 
 #ADD LARAVEL ALIASES
 COPY ./aliases /root/aliases
