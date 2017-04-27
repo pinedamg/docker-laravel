@@ -23,6 +23,11 @@ RUN export DISABLE_NOTIFIER=true
 #INSTALL LARAVEL COMMAND
 RUN composer global require "laravel/installer"
 
+#INSTALL LARAVEL MIX
+RUN node -v
+RUN npm -v
+RUN npm install
+
 #ADD LARAVEL RECOMMEND SETTINGS
 COPY 60-laravel.ini /etc/php5/mods-available/zz-laravel.ini
 RUN php5enmod laravel
