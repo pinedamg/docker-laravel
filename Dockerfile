@@ -29,7 +29,7 @@ RUN npm -v
 RUN npm install
 
 #ADD LARAVEL RECOMMEND SETTINGS
-COPY 60-laravel.ini /etc/php5/mods-available/zz-laravel.ini
+COPY zz-laravel.ini /etc/php5/mods-available/zz-laravel.ini
 RUN php5enmod laravel
 
 #ADD LARAVEL ALIASES
